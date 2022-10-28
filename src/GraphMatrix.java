@@ -257,6 +257,44 @@ public class GraphMatrix {
         }
         System.out.println("Path: " + C);
 
+
     }
+    public void bellmanFord(int s, int t){
+        long start = System.currentTimeMillis();
+        int[] pred = new int[this.countNodes];
+        int[] dist = new int[this.countNodes];
+    
+        for (int i = 0; i < this.countNodes; i++) {
+          dist[i] = INF;
+          pred[i] = -1;
+        }
+        dist[s] = 0;
+    
+        for (int i = 0; i < this.countNodes; i++) {
+          for (int j = 0; j < this.countNodes; j++) {
+            if(i!=j && this.adjMatrix[i][j]!=0) {
+              if (dist[j] > dist[i]+this.adjMatrix[i][j]){
+                dist[j] = dist[i] + this.adjMatrix[i][j];
+                pred[j] = i;
+              }
+            }
+          }
+        }
+    
+        
+        System.out.printf("Distância entre %d e %d: %d   ", s,t,dist[t]);
+        ArrayList<Integer> caminho = new ArrayList<Integer>();
+        int aux = t;
+        caminho.add(t);
+        while(aux != s){
+          aux = pred[aux];
+          caminho.add(0,aux);
+        }
+        System.out.println("Caminho: " + caminho);
+    
+        long elapsed = System.currentTimeMillis() - start;
+        System.out.println("\nTempo de execução: " + elapsed + " ms");
+      }
+      
 
 }

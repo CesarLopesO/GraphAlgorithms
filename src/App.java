@@ -43,11 +43,11 @@ class App {
                     System.out.println("3 - Bellman Ford Melhorado");
                     System.out.println("4 - FloyWarshall");
                     int alg = sc.nextInt();
-                    GraphList g1 = new GraphList(arquivos[file]);
-                    GraphMatrix g2 = new GraphMatrix(arquivos[file]);
+                 
 
                     switch(alg){
                         case 1:
+                        GraphList g1 = new GraphList(arquivos[file]);
                     System.out.println();
                     System.out.println("[Dijkstra]");
                     System.out.println();
@@ -57,24 +57,27 @@ class App {
                     System.out.println("O tempo total foi de " + totalTime / 1000 + " segundos.");
                     break ;
                     case 2:
+                    GraphList g3 = new GraphList(arquivos[file]);
                     System.out.println();
                     System.out.println("[Bellman Ford]");
                     System.out.println();
                     startTime = System.currentTimeMillis();
-                    g1.bellmanFord(s, d);
+                    g3.bellmanFord(s, d);
                     totalTime = System.currentTimeMillis() - startTime;
                     System.out.println("O tempo total foi de " + totalTime / 1000 + " segundos.");
                     break; 
                     case 3:
+                    GraphList g4 = new GraphList(arquivos[file]);
                     System.out.println();
                     System.out.println("[Bellman Ford Melhorado]");
                     System.out.println();
                     startTime = System.currentTimeMillis();
-                    g1.bellmanFordMelhorado(s, d);
+                    g4.bellmanFordMelhorado(s, d);
                     totalTime = System.currentTimeMillis() - startTime;
                     System.out.println("O tempo total foi de " + totalTime / 1000 + " segundos.");
                     break;
                     case 4:
+                    GraphMatrix g2 = new GraphMatrix(arquivos[file]);
                     System.out.println();
                     System.out.println("[Floyd Warshall]");
                     System.out.println();
@@ -89,10 +92,10 @@ class App {
                 case 2:
                     System.out.println("Informe o nome do arquivo:(Exemplo: files/maze/toy.txt)");
                     String filename = sc.next();
-                    long startTimeLabirinto = System.currentTimeMillis();
-                    //Labirinto labirinto = new Labirinto(filename);
-                    float totalTimeLabirinto = System.currentTimeMillis() - startTimeLabirinto;
-                    System.out.println("O tempo total foi de " + totalTimeLabirinto / 1000 + " segundos.");
+                    long startTimeMaze = System.currentTimeMillis();
+                    maze labirinto = new maze(filename);
+                    float totalTimeMaze = System.currentTimeMillis() - startTimeMaze;
+                    System.out.println("O tempo total foi de " + totalTimeMaze / 1000 + " segundos.");
 
                     break;
                 case 3:
