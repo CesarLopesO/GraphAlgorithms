@@ -4,12 +4,12 @@ import java.util.Scanner;
 class App {
     public static void main(String[] args) throws IOException {
         String arquivos[] = new String[6];
-        arquivos[0] = "files/cm/toy.txt";
-        arquivos[1] = "files/cm/rg300_4730.txt";
-        arquivos[2] = "files/cm/rome99c.txt";
-        arquivos[3] = "files/cm/facebook_combined.txt";
-        arquivos[4] = "files/cm/USA-road-dt.DC.txt";
-        arquivos[5] = "files/cm/USA-road-dt.NY.txt";
+        arquivos[0] = "src/toy.txt";
+        arquivos[1] = "src/rg300_4730.txt";
+        arquivos[2] = "src/rome99c.txt";
+        arquivos[3] = "src/facebook_combined.txt";
+        arquivos[4] = "src/USA-road-dt.DC.txt";
+        arquivos[5] = "src/USA-road-dt.NY.txt";
 
         Scanner sc = new Scanner(System.in);
 
@@ -33,15 +33,21 @@ class App {
                     System.out.println("4 - USA-road-dt.DC.txt");
                     System.out.println("5 - USA-road-dt.NY.txt");
                     int file = sc.nextInt();
-
                     System.out.println("Insira a origem:");
                     int s = sc.nextInt();
                     System.out.println("Insira o destino:");
                     int d = sc.nextInt();
-
+                    System.out.println("Qual algoritmo de busca ?");
+                    System.out.println("1 - Dijkstra ?");
+                    System.out.println("2 - Bellman Ford");
+                    System.out.println("3 - Bellman Ford Melhorado");
+                    System.out.println("4 - FloyWarshall");
+                    int alg = sc.nextInt();
                     GraphList g1 = new GraphList(arquivos[file]);
                     GraphMatrix g2 = new GraphMatrix(arquivos[file]);
 
+                    switch(alg){
+                        case 1:
                     System.out.println();
                     System.out.println("[Dijkstra]");
                     System.out.println();
@@ -49,7 +55,8 @@ class App {
                     g1.dijkstra(s, d);
                     float totalTime = System.currentTimeMillis() - startTime;
                     System.out.println("O tempo total foi de " + totalTime / 1000 + " segundos.");
-
+                    break ;
+                    case 2:
                     System.out.println();
                     System.out.println("[Bellman Ford]");
                     System.out.println();
@@ -57,7 +64,8 @@ class App {
                     g1.bellmanFord(s, d);
                     totalTime = System.currentTimeMillis() - startTime;
                     System.out.println("O tempo total foi de " + totalTime / 1000 + " segundos.");
-
+                    break; 
+                    case 3:
                     System.out.println();
                     System.out.println("[Bellman Ford Melhorado]");
                     System.out.println();
@@ -65,7 +73,8 @@ class App {
                     g1.bellmanFordMelhorado(s, d);
                     totalTime = System.currentTimeMillis() - startTime;
                     System.out.println("O tempo total foi de " + totalTime / 1000 + " segundos.");
-
+                    break;
+                    case 4:
                     System.out.println();
                     System.out.println("[Floyd Warshall]");
                     System.out.println();
@@ -74,12 +83,14 @@ class App {
                     totalTime = System.currentTimeMillis() - startTime;
                     System.out.println("O tempo total foi de " + totalTime / 1000 + " segundos.");
                     break;
-
+                   
+                }
+                    break;
                 case 2:
                     System.out.println("Informe o nome do arquivo:(Exemplo: files/maze/toy.txt)");
                     String filename = sc.next();
                     long startTimeLabirinto = System.currentTimeMillis();
-                    Labirinto labirinto = new Labirinto(filename);
+                    //Labirinto labirinto = new Labirinto(filename);
                     float totalTimeLabirinto = System.currentTimeMillis() - startTimeLabirinto;
                     System.out.println("O tempo total foi de " + totalTimeLabirinto / 1000 + " segundos.");
 
