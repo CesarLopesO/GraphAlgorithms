@@ -48,7 +48,7 @@ class App {
                 System.out.println("[Bellman Ford]");
                 System.out.println();
                 startTime = System.currentTimeMillis();
-                g1.bellmanford(s, d);
+                g1.bellmanFord(s, d);
                 totalTime = System.currentTimeMillis() - startTime;
                 System.out.println("O tempo total foi de " + totalTime / 1000 + " segundos.");
 
@@ -56,7 +56,7 @@ class App {
                 System.out.println("[Bellman Ford Melhorado]");
                 System.out.println();
                 startTime = System.currentTimeMillis();
-                g1.bellmanford_melhorado(s, d);
+                g1.bellmanFordMelhorado(s, d);
                 totalTime = System.currentTimeMillis() - startTime;
                 System.out.println("O tempo total foi de " + totalTime / 1000 + " segundos.");
 
@@ -88,6 +88,5 @@ class App {
     }
 
     sc.close();
-        sc.close();
-}
+       
 }
